@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+	<property>
+		<name>dfs.namenode.rpc-address</name>
+		<value>sparkdis1:8020</value>
+	</property>
+    
+	<property>
+		<name>dfs.namenode.http-address</name>
+		<value>sparkdis1:50070</value>
+	</property>
+
+	<property>
+		<name>dfs.ha.fencing.methods</name>
+		<value>sshfence</value>
+	</property>
+
+	<property>
+		<name>dfs.ha.fencing.ssh.private-key-files</name>
+		<value>/home/hadoop/.ssh/id_rsa</value>
+	</property>
+
+	<property>
+		<name>dfs.namenode.name.dir</name>
+		<value>file:/hadoop/dfs/name,file:/app/hadoop/dfs/name</value>
+	</property>
+
+	<property>
+		<name>dfs.namenode.edits.dir</name>
+		<value>file:/hadoop/dfs/name,file:/app/hadoop/dfs/name</value>
+	</property>
+
+	<property>
+		<name>dfs.datanode.data.dir</name>
+		<value>file:/app/hadoop/dfs/data</value>
+	</property>
+
+	<property>
+		<name>dfs.datanode.handler.count</name>
+		<value>100</value>
+	</property>
+
+	<property>
+		<name>dfs.namenode.handler.count</name>
+		<value>1024</value>
+	</property>
+
+	<property>
+		<name>dfs.datanode.max.xcievers</name>
+		<value>8096</value>
+	</property>
+	<property>
+ 		 <name>dfs.client.block.write.replace-datanode-on-failure.enable</name>
+  		<value>true</value>
+	</property>
+	<property>
+  		<name>dfs.client.block.write.replace-datanode-on-failure.policy</name>
+  		<value>NEVER</value>
+	</property>
+
+</configuration>

@@ -1,0 +1,92 @@
+server:
+  port: 8767
+  connection-timeout: 30
+  servlet:
+    session:
+      timeout: 30
+  max-http-header-size: 100000
+spring:
+  application:
+    name: service-hadoop
+  datasource:
+    sparksql:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:hive2://10.0.9.53:20001/default
+      driver-class-name: org.apache.hive.jdbc.HiveDriver
+      username: hadoop
+      password: hadoop
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 600000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      filters: stat,wall,log4j #负载监控功能 此功能不支持hive
+      logSlowSql: true
+      dbType: hive
+    mysql:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://10.0.9.53:3306/hive?useUnicode=true&characterEncoding=UTF-8&nullNamePatternMatchesAll=true&useSSL=false
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: hive
+      password: hive
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 600000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      filters: stat,wall,log4j #负载监控功能 此功能不支持hive
+      logSlowSql: true
+      dbType: mysql
+    hive:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:hive2://10.0.9.53:10000/default
+      driver-class-name: org.apache.hive.jdbc.HiveDriver
+      username: hadoop
+      password: hadoop
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 600000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      filters: stat,wall,log4j #负载监控功能 此功能不支持hive
+      logSlowSql: true
+      dbType: hive
+    oracle:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:oracle:thin:@10.0.9.41:1521:RMD
+      driver-class-name: oracle.jdbc.OracleDriver
+      username: USERANALY
+      password: USERANALY
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 600000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      filters: stat,wall,log4j #负载监控功能 此功能不支持hive
+      logSlowSql: true
+      dbType: oracle
+  servlet:
+    multipart:
+      max-file-size: 50000Mb
+      max-request-size: 50000Mb
+      enabled: true
